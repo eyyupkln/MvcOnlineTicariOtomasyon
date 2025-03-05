@@ -1,0 +1,17 @@
+﻿
+<h2 class="m-3">
+    The Page Of Adding New Category
+</h2>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<form method="post" action="~/Category/Save" class="m-3">
+
+    <input required type="text" placeholder="Category Name" class="form-control m-3" id="CategoryName" name="CategoryName" />
+    <button type="submit" class="btn btn-primary m-3" id="btn2">Save</button>
+
+</form>
+<script>
+    $("#btn2").click(function () {
+        swal("Good job!", "You clicked the button!", "success");
+    })
+</script>

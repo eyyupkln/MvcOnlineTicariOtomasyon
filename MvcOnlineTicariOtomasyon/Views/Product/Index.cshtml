@@ -1,0 +1,107 @@
+﻿
+@model List<MvcOnlineTicariOtomasyon.Models.classes.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+
+            <th>
+                Prodcut
+            </th>
+            <th>
+                Brand
+            </th>
+            <th>
+                Stock
+            </th>
+            <th>
+                Purchase Price
+            </th>
+            <th>
+                Sales Price
+            </th>
+            <th>
+                Sitiuation
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
+            </th>
+            <th>
+                Detail
+            </th><th>
+                Sale
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                @item.Brand
+            </td>
+            <td>
+                @item.Stock
+            </td>
+            <td>
+                @item.Purchaseprice ₺
+            </td>
+            <td>
+                @item.SalesPrice ₺
+            </td>
+            <td>
+                @item.Situation
+            </td>
+            <td>
+                @item.Category.CategoryName
+            </td>
+            <td>
+                <a href="~/Product/Update?ProductId=@item.ProductId" class="btn btn-warning">Update</a>
+
+            </td>
+            <td>
+                <a href="~/Product/Delete?ProductId=@item.ProductId" class="btn btn-danger">Delete</a>
+            </td>
+            <td>
+                <a href="~/ProductDetail/Index?ProductId=@item.ProductId" class="btn btn-info">Detail</a>
+            </td>
+            <td>
+                <a href="~/Product/Sale?ProductId=@item.ProductId" class="btn btn-success">Sale</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+<a href="~/Product/Save" class="btn btn-primary">Add Product</a>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="~/web/Web/dist/js/scripts.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

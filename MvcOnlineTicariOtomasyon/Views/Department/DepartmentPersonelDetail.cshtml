@@ -1,0 +1,88 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.SalesMove>
+@{
+    ViewBag.Title = "DepartmentPersonelDetail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2 class="m-3">
+    The Page Detail Department Personel
+</h2>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Name: @ViewBag.deptper</li>
+</ol>
+<table id="tbl1" class="table table-hover mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Cari
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Print
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.SalesMoveId
+            </td>
+
+            <td>
+                @item.Product.ProductName (@item.Product.Brand)
+            </td>
+            <td>
+                @item.Cariler.CariName @item.Cariler.CariSurname
+            </td>
+            <td>
+                @item.Price ₺
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Amount ₺
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                <a href="#" class="btn btn-info">Print</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

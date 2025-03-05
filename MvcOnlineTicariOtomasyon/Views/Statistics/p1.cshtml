@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.classes.ClassGrup2>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Personel Department Table</h3>
+
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Department</th>
+                        <th>Progress</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int sırano = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@{sırano++;} @sırano</td>
+                            <td>@item.Department</td>
+                            @if (item.Count == 1)
+                            {
+                                <td>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                    </div>
+                                </td>
+
+                            }
+                            @if (item.Count == 2)
+                            {
+                                <td>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                    </div>
+                                </td>
+
+                            }
+                            @if (item.Count >= 3)
+                            {
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar bg-success" style="width: 90%"></div>
+                                    </div>
+                                </td>
+
+                            }
+                            <td>
+                                @if (item.Count == 1)
+                                {<span class="badge bg-danger">@item.Count</span>}
+                                @if (item.Count == 2)
+                                {<span class="badge bg-warning">@item.Count</span>}
+                                @if (item.Count >= 3)
+                                {<span class="badge bg-success">@item.Count</span>}
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+   

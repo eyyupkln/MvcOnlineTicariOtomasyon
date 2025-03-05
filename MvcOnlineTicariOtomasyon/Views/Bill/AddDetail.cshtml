@@ -1,0 +1,22 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.BillDetail
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2 class="m-3">
+    The Page Of Adding New Bill Detail
+</h2>
+<form method="post" action="~/Bill/AddDetail" class="m-3">
+
+    <input required type="hidden" placeholder="BillDetail Id" class="form-control m-2" id="BillDetailId" name="BillDetailId" />
+
+    <input required type="text" placeholder="Description" class="form-control m-2" id="Description" name="Description" />
+    <input required type="text" placeholder="Quantity" class="form-control m-2" id="Quantity" name="Quantity" />
+    <input required type="number" placeholder="Unit Price" class="form-control m-2" id="UnitPrice" name="UnitPrice" />
+    <input required type="number" placeholder="Amount" class="form-control m-2" id="Amount" name="Amount" />
+    <input required type="hidden" placeholder="Bill Id" class="form-control m-2" id="@Model.BillId" name="BillId" value="@Model.BillId" />
+
+    <button type="submit" class="btn btn-primary m-3">Save</button>
+
+</form>
+

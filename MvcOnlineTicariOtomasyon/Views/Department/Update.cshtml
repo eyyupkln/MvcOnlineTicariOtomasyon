@@ -1,0 +1,12 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Department
+<h2 class="m-3">
+    The Page Of Update Department
+</h2>
+<form method="post" action="~/Department/Update" class="m-3">
+
+    
+    @Html.HiddenFor(x => x.DepartmentId, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+    <button type="submit" class="btn btn-primary m-3">Update</button>
+
+</form>

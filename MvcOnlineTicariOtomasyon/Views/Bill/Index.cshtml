@@ -1,0 +1,92 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.Bill>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            
+            <th>
+                Seri Rank No
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Hour
+            </th>
+            <th>
+                Tax Authority
+            </th>
+            <th>
+                Delivered
+            </th>
+            <th>
+                Received
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Details
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>
+                @item.BillSerino @item.BillSırano
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.Hour
+            </td>
+            <td>
+                @item.VergiDairesi
+            </td>
+            <td>
+                @item.TeslimEden
+            </td>
+            <td>
+                @item.TeslimAlan
+            </td>
+            <td>
+                @item.Total ₺
+            </td>
+            <td>
+                <a href="~/Bill/Update?BillId=@item.BillId" class="btn btn-warning">Update</a>
+
+            </td>
+            <td>
+                <a href="~/Bill/Detail?BillId=@item.BillId" class="btn btn-info">Detail</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="~/Bill/Save" class="btn btn-primary">Add Bill</a>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

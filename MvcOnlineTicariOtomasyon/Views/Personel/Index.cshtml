@@ -1,0 +1,83 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<a href="~/Personel/PersonDetail" class="btn btn-success">Show Personel List</a>
+<br />
+<br />
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                Personel Name
+            </th>
+            <th>
+                Personel Surname
+            </th>
+            <th>
+                İmage
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Sales
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.PersonelId
+            </td>
+
+            <td>
+                @item.PersonelName
+            </td>
+            <td>
+                @item.PersonelSurname
+            </td>
+            <td>
+                <img src="@item.Personelİmage" alt="" class="img-circle img-fluid" style="width:100px;height:75px;">
+            </td>
+            <td>
+                @item.Department.DepartmentName
+            </td>
+            <td>
+                <a href="~/Personel/Update?PersonelId=@item.PersonelId" class="btn btn-warning">Update</a>
+
+            </td>
+            <td>
+                <a href="~/Department/DepartmentPersonelDetail?PersonelId=@item.PersonelId " class="btn btn-info">Sales</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="~/Personel/Save" class="btn btn-primary">Add Personel</a>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

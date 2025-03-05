@@ -1,0 +1,24 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Cariler
+@{
+    ViewBag.Title = "Save";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<h2 class="m-3">
+    The Page Of Adding New Cari
+</h2>
+<form method="post" action="~/Cari/Save" class="m-3">
+
+    <input type="hidden" placeholder="Cari Id" class="form-control m-2" id="CariId" name="CariId" />
+
+    <input required type="text" placeholder="Cari Name" class="form-control m-2" id="CariName" name="CariName" />
+    <input required type="text" placeholder="Cari Surname" class="form-control m-2" id="CariSurname" name="CariSurname" />
+    <input required type="text" placeholder="Cari City" class="form-control m-2" id="CariCity" name="CariCity" />
+    <input required type="email" placeholder="Cari Mail" class="form-control m-2" id="CariMail" name="CariMail" />
+
+    @*@Html.DropDownListFor(x => x.categoryid, (List<SelectListItem>)ViewBag.ctg, new { @class = "form-control" })*@
+
+    <button type="submit" class="btn btn-primary m-3">Save</button>
+
+</form>
+

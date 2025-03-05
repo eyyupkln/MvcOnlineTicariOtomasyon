@@ -1,0 +1,102 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.SalesMove>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Cari
+            </th>
+            <th>
+                Personel
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Detail
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.SalesMoveId
+            </td>
+
+            <td>
+                @item.Product.ProductName (@item.Product.Brand)
+            </td>
+            <td>
+                @item.Cariler.CariName @item.Cariler.CariSurname
+            </td>
+            <td>
+                @item.Personel.PersonelName @item.Personel.PersonelSurname
+            </td>
+            <td>
+                @item.Price ₺
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Amount ₺
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                <a href="~/Sales/Update?SalesMoveId=@item.SalesMoveId" class="btn btn-warning">Update</a>
+
+            </td>
+            <td>
+                <a href="~/Sales/SalesDetail?SalesMoveId=@item.SalesMoveId " class="btn btn-info">Detail</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<a href="~/Sales/Save" class="btn btn-primary">New Sales</a>
+<a href="~/Sales/Salesprint" class="btn btn-secondary">Print All Sales <i class="fa fa-print"></i></a>
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+
+

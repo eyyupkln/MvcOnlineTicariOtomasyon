@@ -1,0 +1,61 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                Category Name
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.CategoryId
+            </td>
+
+            <td>
+                @item.CategoryName
+            </td>
+            <td>
+                <a href="~/Category/Update?CategoryId=@item.CategoryId" class="btn btn-warning">Update</a>
+
+            </td>
+            <td>
+                <a href="~/Category/Delete?CategoryId=@item.CategoryId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="~/Category/Save" class="btn btn-primary">Add Category</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

@@ -1,0 +1,23 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Bill
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2 class="m-3">
+    The Page Of Update Bill
+</h2>
+<form method="post" action="~/Bill/Update" class="m-3">
+    <input required type="hidden" placeholder="Bill Id" class="form-control m-2" id="BillId" name="BillId" value="@Model.BillId" />
+
+    <input required type="text" placeholder="Bill Seri No" class="form-control m-2" id="BillSerino" name="BillSerino" value="@Model.BillSerino" />
+    <input required type="number" placeholder="Bill Rank No" class="form-control m-2" id="BillSırano" name="BillSırano" value="@Model.BillSırano"  />
+    <input required type="datetime" placeholder="Date" class="form-control m-2" id="Date" name="Date" value="@Model.Date"  />
+    <input required type="text" placeholder="Hour" class="form-control m-2" id="Hour" name="Hour" value="@Model.Hour" />
+    <input required type="text" placeholder="Tax Authority" class="form-control m-2" id="VergiDairesi" name="VergiDairesi" value="@Model.VergiDairesi" />
+    <input required type="text" placeholder="Delivered" class="form-control m-2" id="TeslimEden" name="TeslimEden" value="@Model.TeslimEden"  />
+    <input required type="text" placeholder="Received" class="form-control m-2" id="TeslimAlan" name="TeslimAlan" value="@Model.TeslimAlan"  />
+    @*@Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dept, new { @class = "form-control" })*@
+
+    <button type="submit" class="btn btn-primary m-3">Update</button>
+
+</form>

@@ -1,0 +1,88 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<table id="tbl1" class="table table-bordered mt-2 ml-2 mr-2">
+    <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                Cari Name
+            </th>
+            <th>
+                Cari Surname
+            </th>
+            <th>
+                Cari City
+            </th>
+            <th>
+                Cari Mail
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
+            </th>
+            <th>
+                Sales
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.CariId
+            </td>
+
+            <td>
+                @item.CariName
+            </td>
+            <td>
+                @item.CariSurname
+            </td>
+            <td>
+                @item.CariCity
+            </td>
+            <td>
+                @item.CariMail
+            </td>
+            <td>
+                <a href="~/Cari/Update?CariId=@item.CariId" class="btn btn-warning" >Update</a>
+
+            </td>
+            <td>
+                <a href="~/Cari/Delete?CariId=@item.CariId" class="btn btn-danger" >Delete</a>
+            </td>
+            <td>
+                <a href="~/Cari/SalesHistory?CariId=@item.CariId" class="btn btn-info">Sales History</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="~/Cari/Save" class="btn btn-primary">Add Cari</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+
+

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2 class="m-3">
+    The Page Of Adding New Cargo Detail
+</h2>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<form method="post" action="~/Cargo/Save" class="m-3">
+
+    <input required type="text" placeholder="Code" class="form-control m-3" id="Code" name="Code" value="@ViewBag.code" readonly/>
+
+    <input required type="text" placeholder="Personel" class="form-control m-3" id="Personel" name="Personel" />
+    <input required type="text" placeholder="Receipent" class="form-control m-3" id="Receipent" name="Receipent" />
+    <input required type="date" placeholder="Date" class="form-control m-3" id="Date" name="Date" />
+    <input required type="text" placeholder="Description" class="form-control m-3" id="Description" name="Description" />
+    <button type="submit" class="btn btn-primary m-3" id="btn2">Save</button>
+
+</form>

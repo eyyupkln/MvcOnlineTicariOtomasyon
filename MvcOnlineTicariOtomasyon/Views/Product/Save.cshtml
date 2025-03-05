@@ -1,0 +1,26 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Product
+@{
+    ViewBag.Title = "Save";
+}
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<h2 class="m-3">
+    The Page Of Adding New Product
+</h2>
+<form method="post" action="~/Product/Save" class="m-3">
+
+    <input required type="hidden" placeholder="Product Id" class="form-control m-2" id="ProductId" name="ProductId" />
+
+    <input required type="text" placeholder="Pruduct Name" class="form-control m-2" id="PruductName" name="PruductName" />
+    <input required type="text" placeholder="Brand" class="form-control m-2" id="Brand" name="Brand" />
+    <input required  type="number" placeholder="Stock" class="form-control m-2" id="Stock" name="Stock" />
+    <input required type="number" placeholder="Purchase Price" class="form-control m-2" id="Purchaseprice" name="Purchaseprice" />
+    <input required type="number" placeholder="Sales Price" class="form-control m-2" id="SalesPrice" name="SalesPrice" />
+    <input  required type="text" placeholder="Situation" class="form-control m-2" id="Situation" name="Situation" />
+    <input required type="text" placeholder="İmage" class="form-control m-2" id="İmage" name="İmage" />
+    @Html.DropDownListFor(x => x.categoryid, (List<SelectListItem>)ViewBag.ctg, new { @class = "form-control" })
+
+    <button type="submit" class="btn btn-primary m-3" >Save</button>
+
+</form>
+

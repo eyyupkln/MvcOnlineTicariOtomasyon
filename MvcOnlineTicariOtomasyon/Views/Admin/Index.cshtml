@@ -1,0 +1,25 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<form method="post" action="/Admin/Save" class="m-3>
+
+    
+        <input type="hidden" id="AdminId" name="AdminId" />
+
+            <label for="UserName" class="col-md-2 col-form-label">User Name</label>
+            <div class="col-md-4">
+                <input required type="text" id="UserName" name="UserName" placeholder="User Name" class="form-control"  value="@Model.UserName"/>
+            </div> <br />
+
+            <label for="Password" class="col-md-2 col-form-label">Password</label>
+            <div class="col-md-4">
+                <input required type="password" id="Password" name="Password" placeholder="Password" class="form-control" />
+            </div>
+        <br />
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

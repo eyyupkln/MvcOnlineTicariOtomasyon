@@ -1,0 +1,463 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.ClassGroup4
+@{
+    ViewBag.Title = "Dynamic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="panel panel-default">
+
+    <div class="panel-heading justify-content-around">
+
+        <div class="col">
+
+            <h2 class="panel-title pull-left" style="margin-left:10px;">
+
+                <strong>Bill Details</strong>
+
+            </h2>
+            <div class="col-4 text-left">
+                <button type="button" class="btn btn-info" onclick="addNewOrder()">Add New Bill</button>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    @foreach (var item in Model.değer1)
+
+    {
+
+        <div class="panel-body">
+
+            <table class="table table-striped table-responsive">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Bill No: @item.BillSerino-@item.BillSırano </td>
+
+                        <td>Date : @item.Date </td>
+                        <td>Cari : @item.TeslimEden </td>
+
+                        <td>Vergi Dairesi : @item.VergiDairesi</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            <table class="table table-bordered">
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>Description</th>
+
+                                        <th>Quantity</th>
+
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+
+                                    @{
+
+                                        var totalBill = 0;
+
+                                    }
+
+                                    @foreach (var order in item.BillDetails)
+
+                                    {
+
+                                        <tr>
+
+                                            <td>@order.Description</td>
+
+                                            <td>@order.Quantity</td>
+
+                                            <td>@order.UnitPrice</td>
+                                            <td>@order.Amount</td>
+
+                                        </tr>
+
+                                        totalBill = totalBill + @Convert.ToInt32(order.Amount);
+
+                                    }
+
+                                </tbody>
+
+                            </table>
+
+                            <span class="pull-right" style="margin-right:100px;"><strong>Total Bill :  </strong> @totalBill</span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    }
+
+</div>
+
+@*Adım 2*@
+
+
+
+<div class="modal fade" id="newOrderModal">
+
+    <div class="modal-dialog modal-lg" style=" width: 1200px !important;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+                <h4>Add New Bill</h4>
+
+            </div>
+
+            <form id="NewOrderForm">
+
+                <div class="modal-body">
+
+                    @*Bill*@
+
+                    <h5 style="color:#ff6347">Bill</h5>
+
+                    <hr />
+
+                    <div class="form-horizontal">
+
+                        <input type="hidden" id="BillId" name="BillId" />
+
+                        <div class="row mb-3">
+
+                            <label for="BillSerino" class="col-md-2 col-form-label">Seri No</label>
+                            <div class="col-md-4">
+                                <input type="text" id="BillSerino" name="BillSerino" placeholder="Seri No" class="form-control" />
+                            </div>
+
+                            <label for="BillSırano" class="col-md-2 col-form-label">Sıra No</label>
+                            <div class="col-md-4">
+                                <input type="text" id="BillSırano" name="BillSırano" placeholder="Sıra No" class="form-control" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="Date" class="col-md-2 col-form-label">Date</label>
+                            <div class="col-md-4">
+                                <input type="text" id="Date" name="Date" placeholder="Date" class="form-control" />
+                            </div>
+
+                            <label for="VergiDairesi" class="col-md-2 col-form-label">Vergi Dairesi</label>
+                            <div class="col-md-4">
+                                <input type="text" id="VergiDairesi" name="VergiDairesi" placeholder="Vergi Dairesi" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="Hour" class="col-md-2 col-form-label">Hour</label>
+                            <div class="col-md-4">
+                                <input type="text" id="Hour" name="Hour" placeholder="Hour" class="form-control" />
+                            </div>
+
+                            <label for="TeslimEden" class="col-md-2 col-form-label">Teslim Eden</label>
+                            <div class="col-md-4">
+                                <input type="text" id="TeslimEden" name="TeslimEden" placeholder="Teslim Eden" class="form-control" />
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="row mb-3">
+                        <label for="TeslimAlan" class="col-md-2 col-form-label">Teslim Alan</label>
+                        <div class="col-md-4">
+                            <input type="text" id="TeslimAlan" name="TeslimAlan" placeholder="Teslim Alan" class="form-control" />
+                        </div>
+
+                        <label for="Total" class="col-md-2 col-form-label">Total</label>
+                        <div class="col-md-4">
+                            <input type="text" id="Total" name="Total" placeholder="Total" class="form-control" />
+                        </div>
+                    </div>
+
+
+                </div>
+
+                @*Bill Details*@
+
+                <h5 style="margin-top:10px;color:#ff6347">Bill Details</h5>
+
+                <hr />
+
+                <div class="form-horizontal">
+
+                    <input type="hidden" id="BillDetailId" name="BillDetailId"/>
+
+                    <div class="row mb-3">
+                        <label for="Description" class="col-md-2 col-form-label">Description</label>
+                        <div class="col-md-4">
+                            <input type="text" id="Description" name="Description" placeholder="Description" class="form-control" />
+                        </div>
+
+                        <label for="UnitPrice" class="col-md-2 col-form-label">Unit Price</label>
+                        <div class="col-md-4">
+                            <input type="number" id="UnitPrice" name="UnitPrice" placeholder="Unit Price" class="form-control" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row mb-3">
+                        <label for="Quantity" class="col-md-2 col-form-label">Quantity</label>
+                        <div class="col-md-4">
+                            <input type="number" id="Quantity" name="Quantity" placeholder="Quantity" class="form-control" />
+                        </div>
+
+                        <div class="col-md-2 offset-md-4">
+                            <a id="addToList" class="btn btn-primary w-100">Add To List</a>
+                        </div>
+                    </div>
+
+
+
+
+                    <table id="detailsTable" class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th style="width:30%">Description</th>
+
+                                <th style="width:20%">Unit Price</th>
+
+                                <th style="width:15%">Quantity</th>
+
+                                <th style="width:25%">Amount</th>
+
+                                <th style="width:10%"></th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <div class="modal-footer">
+
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Save Bill</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@*Adım 3*@
+
+
+
+@section scripts{
+
+    <script>
+
+        //Show Modal.
+
+        function addNewOrder() {
+
+            var myModal = new bootstrap.Modal(document.getElementById('newOrderModal'));
+            myModal.show();
+        }
+
+        //Add Multiple Order.
+
+        $("#addToList").click(function (e) {
+
+            e.preventDefault();
+
+
+
+            if ($.trim($("#Description").val()) == "" || $.trim($("#UnitPrice").val()) == "" || $.trim($("#Quantity").val()) == "") return;
+
+
+
+            var Description = $("#Description").val(),
+
+                UnitPrice = $("#UnitPrice").val(),
+
+                Quantity = $("#Quantity").val(),
+
+                detailsTableBody = $("#detailsTable tbody");
+
+
+
+            var productItem = '<tr><td>' + Description + '</td><td>' + UnitPrice + '</td><td>' + Quantity + '</td><td>' + (parseFloat(UnitPrice) * parseInt(Quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+
+            detailsTableBody.append(productItem);
+
+            clearItem();
+
+        });
+
+        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+
+        function clearItem() {
+
+            $("#Description").val('');
+
+            $("#UnitPrice").val('');
+
+            $("#Quantity").val('');
+
+        }
+
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+
+        $(document).on('click', 'a.deleteItem', function (e) {
+
+            e.preventDefault();
+
+            var $self = $(this);
+
+            if ($(this).attr('data-itemId') == "0") {
+
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+
+                    $(this).remove();
+
+                });
+
+            }
+
+        });
+
+        //After Click Save Button Pass All Data View To Controller For Save Database
+
+        function saveOrder(data) {
+
+            return $.ajax({
+
+                contentType: 'application/json; charset=utf-8',
+
+                dataType: 'json',
+
+                type: 'POST',
+
+                url: "/Bill/Dsave",
+
+                data: data,
+
+                success: function (result) {
+
+                    alert(result);
+
+                    location.reload();
+
+                },
+
+                error: function () {
+
+                    alert("Error!")
+
+                }
+
+            });
+
+        }
+
+        //Collect Multiple Order List For Pass To Controller
+
+        $("#saveOrder").click(function (e) {
+
+            e.preventDefault();
+
+
+
+            var orderArr = [];
+
+            orderArr.length = 0;
+
+
+
+            $.each($("#detailsTable tbody tr"), function () {
+
+                orderArr.push({
+
+                    Description: $(this).find('td:eq(0)').html(),
+                    UnitPrice: $(this).find('td:eq(1)').html(),
+
+                    Quantity: $(this).find('td:eq(2)').html(),
+                    Amount: $(this).find('td:eq(3)').html()
+
+                });
+
+            });
+
+
+
+
+
+            var data = JSON.stringify({
+
+                BillSerino: $("#BillSerino").val(),
+                BillSırano: $("#BillSırano").val(),
+                Date: $("#Date").val(),
+                VergiDairesi: $("#VergiDairesi").val(),
+                Hour: $("#Hour").val(),
+                TeslimAlan: $("#TeslimAlan").val(),
+                TeslimEden: $("#TeslimEden").val(),
+                Total: $("#Total").val(),
+
+                details: orderArr
+
+            });
+
+
+
+            $.when(saveOrder(data)).then(function (response) {
+
+                console.log(response);
+
+            }).fail(function (err) {
+
+                console.log(err);
+
+            });
+
+        });
+
+    </script>
+
+
+}

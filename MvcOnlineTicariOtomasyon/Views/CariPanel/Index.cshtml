@@ -1,0 +1,324 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.Messages>
+@{
+
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/web/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="~/web/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+
+                        <h1>Profile</h1>
+
+                    </div>
+
+
+
+                </div>
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- Main content -->
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+
+                        <div class="card card-primary card-outline">
+
+                            <div class="card-body box-profile">
+
+                                <div class="text-center">
+
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="~/web/AdminLTE-3.0.4/dist/img/user8-128x128.jpg"
+                                         alt="User profile picture">
+
+                                </div>
+                               
+
+
+                                    <h3 class="profile-username text-center">@ViewBag.namesurname</h3>
+
+                                    <p class="text-muted text-center">@ViewBag.m</p>
+                                
+                                <ul class="list-group list-group-unbordered mb-3">
+
+                                    <li class="list-group-item">
+
+                                        <b>Total Sale: </b> <a class="float-right">@ViewBag.totalsale</a>
+
+                                    </li>
+
+                                    <li class="list-group-item">
+
+                                        <b>Total Payment: </b> <a class="float-right">@ViewBag.totalpayment ₺</a>
+
+                                    </li>
+
+                                    <li class="list-group-item">
+
+                                        <b>Total Quantity</b> <a class="float-right">@ViewBag.totalquantity</a>
+
+                                    </li>
+
+                                </ul>
+
+                                <a href="#" class="btn btn-primary btn-block"><b>Cargo Tracking</b></a>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+                        <!-- About Me Box -->
+
+                        <div class="card card-primary">
+
+                            <div class="card-header">
+
+                                <h3 class="card-title">About Me</h3>
+
+                            </div>
+
+                            <!-- /.card-header -->
+                            
+
+                                <div class="card-body">
+
+                                    <strong><i class="fas fa-book mr-1"></i> Job</strong>
+
+                                    <p class="text-muted">
+
+                                        Software Engineer
+
+                                    </p>
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                                    <p class="text-muted">@ViewBag.city</p>
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Phone</strong>
+
+                                    <p class="text-muted">532123456</p>
+                                    <hr>
+
+                                    <strong><i class="far fa-file-alt mr-1"></i> Announcements</strong>
+
+                                    <p class="text-muted"> Visit our website for our new products.
+                                    </p>
+
+                                </div>
+                            
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                    <div class="col-md-9">
+
+                        <div class="card">
+
+                            <div class="card-header p-2">
+
+                                <ul class="nav nav-pills">
+
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Messages</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+
+                                </ul>
+
+                            </div><!-- /.card-header -->
+
+                            <div class="card-body">
+
+                                <div class="tab-content">
+
+                                    <div class="active tab-pane" id="activity">
+
+                                        <!-- Post -->
+                                        @foreach (var item in Model)
+                                        {
+
+
+                                        <div class="post">
+
+                                            <div class="user-block">
+
+                                                <img class="img-circle img-bordered-sm" src="~/web/AdminLTE-3.0.4/dist/img/1.png" alt="user image">
+
+                                                <span class="username">
+
+                                                    <a href="#">@item.Sender</a>
+
+                                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+                                                </span>
+
+                                                <span class="description">@item.Subject - @item.Date.ToShortDateString()</span>
+
+                                            </div>
+
+                                            <!-- /.user-block -->
+
+                                            <p>
+
+                                                @item.Content
+
+                                            </p>
+
+                                        </div>
+
+                                        }
+
+                                        <!-- /.post -->
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="timeline">
+
+                                        <!-- The timeline -->
+                                        @Html.Action("p2", "CariPanel")
+
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="settings">
+
+                                       @Html.Action("p1","CariPanel")
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                </div>
+
+                                <!-- /.tab-content -->
+
+                            </div><!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.nav-tabs-custom -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                </div>
+
+                <!-- /.row -->
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- /.content -->
+
+    </div>
+
+  
+
+    <aside class="control-sidebar control-sidebar-dark">
+
+        <!-- Control sidebar content goes here -->
+
+    </aside>
+
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+    <script src="~/web/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/web/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/web/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="~/web/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+</body>
+
+</html>

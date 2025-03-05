@@ -1,0 +1,25 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.SalesMove
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2 class="m-3">
+    The Page Of Adding New Sales
+</h2>
+<form method="post" action="~/Sales/Save" class="m-3">
+
+    <input type="hidden" placeholder="SalesMove Id" class="form-control m-2" id="SalesMoveId" name="SalesMoveId" />
+
+    @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.p, new { @class = "form-control" }) <br />
+    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.c, new { @class = "form-control" })<br />
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.per, new { @class = "form-control" })<br />
+   
+    <input required type="number" placeholder="Price" class="form-control m-2" id="Price" name="Price" /><br />
+    <input required type="number" placeholder="Quantity" class="form-control m-2" id="Quantity" name="Quantity" /><br />
+    <input required type="number" placeholder="Amount" class="form-control m-2" id="Amount" name="Amount" /><br />
+    @*<input required type="datetime" placeholder="Date" class="form-control m-2" id="Date" name="Date" />*@<br />
+
+    <button type="submit" class="btn btn-primary m-3">Save</button>
+
+</form>
+

@@ -1,0 +1,73 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.SalesMove>
+@{
+    ViewBag.Title = "SalesDetail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2 class="m-3">
+    Sales Detail
+</h2>
+
+
+<table class="table table-hover mt-2 ml-2 mr-2">
+    <tr>
+
+        <th>
+            ID
+        </th>
+        <th>
+            Product
+        </th>
+        <th>
+            Persenol
+        </th>
+        <th>
+            Cari
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Date
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.SalesMoveId
+            </td>
+
+            <td>
+                @item.Product.ProductName (@item.Product.Brand)
+            </td>
+            <td>
+                @item.Personel.PersonelName @item.Personel.PersonelSurname
+            </td>
+            <td>
+                @item.Cariler.CariName @item.Cariler.CariSurname
+            </td>
+            <td>
+                @item.Price ₺
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Amount ₺
+            </td>
+            <td>
+                @item.Date
+            </td>
+        </tr>
+    }
+
+</table>
+

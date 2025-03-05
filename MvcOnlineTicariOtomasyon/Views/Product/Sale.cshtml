@@ -1,0 +1,40 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.SalesMove
+
+@{
+    ViewBag.Title = "Sale";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2 class="m-3">
+    The Page Of Adding New Sales
+</h2>
+<form method="post" action="~/Product/Sale" class="m-3">
+    <label class="form-label">Id:</label>
+    <input type="hidden" placeholder="SalesMove Id" class="form-control m-2" id="SalesMoveId" name="SalesMoveId" />
+    
+    <input type="number" placeholder="Product Id" class="form-control m-2" id="ProductId" name="ProductId" value="@ViewBag.id" readonly /><br />
+    <label class="form-label">Cari Id:</label>
+    <input required type="number" placeholder="Cari Id" class="form-control m-2" id="CariId" name="CariId" /><br />
+    <label class="form-label">Personel:</label>
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.per, new { @class = "form-control" })<br />
+    <label class="form-label">Price:</label>
+    <input required type="number" placeholder="Price" class="form-control m-2" id="Price" name="Price" value="@Convert.ToInt32( @ViewBag.sprice)" readonly /><br />
+    <label class="form-label">Quantity:</label>
+    <input required type="number" placeholder="Quantity" class="form-control m-2" id="Quantity" name="Quantity" onkeyup="sum()" /><br />
+    <label class="form-label">Amount:</label>
+    <input required type="number" placeholder="Amount" class="form-control m-2" id="Amount" name="Amount" /><br />
+    @*<input required type="datetime" placeholder="Date" class="form-control m-2" id="Date" name="Date" />*@<br />
+
+    <button type="submit" class="btn btn-primary m-3">Sale</button>
+
+</form>
+
+<script>
+    function sum() {
+        var number1 = document.getElementById("Quantity").value;
+        var number2 = document.getElementById("Price").value;
+        var result = parseInt(number1) * parseInt(number2);
+        document.getElementById("Amount").value = result;
+
+    }
+
+</script>

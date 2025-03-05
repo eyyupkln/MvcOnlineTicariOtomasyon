@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<div>
+
+    @using (Html.BeginForm("Index", "qrcode", FormMethod.Post))
+            {
+                <input type="text"name="code" class="form-control"/><br />
+                <button class="btn btn-success form-control" type="submit" >Create</button>
+
+            }
+    <br />
+    @if (ViewBag.carecodeimage != null)
+            {
+                <img src="@ViewBag.carecodeimage" alt="" style="width:400px;height:400px;" />
+            }
+</div>

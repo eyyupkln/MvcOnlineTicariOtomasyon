@@ -1,0 +1,23 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.classes.SalesMove>
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+
+<h2>My Orders</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+       <tr>
+           <td>@item.Product.ProductName</td>
+           <td>@item.Price</td>
+           <td>@Convert.ToDateTime( @item.Date).ToString()</td>
+       </tr>
+    }
+</table>

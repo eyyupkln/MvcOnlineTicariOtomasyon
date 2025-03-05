@@ -1,0 +1,27 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Personel
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2 class="m-3">
+    The Page Of Update Personel
+</h2>
+@using (Html.BeginForm("Update", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <form method="post" action="~/Personel/Update" class="m-3">
+
+        <input required type="hidden" placeholder="Personel Id" class="form-control m-2" id="PersonelId" name="PersonelId" value="@Model.PersonelId" />
+
+        <input required type="text" placeholder="Personel Name" class="form-control m-2" id="PersonelName" name="PersonelName" value="@Model.PersonelName" />
+        <input required type="text" placeholder="Personel Surname" class="form-control m-2" id="PersonelSurname" name="PersonelSurname" value="@Model.PersonelSurname" />
+
+        <input required type="file" id="Personelİmage" name="Personelİmage" class="form-control m-2" placeholder="Personel İmage" value="@Model.Personelİmage">
+
+
+        @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dept, new { @class = "form-control" })
+
+        <button type="submit" class="btn btn-primary m-3">Update</button>
+
+    </form>
+}

@@ -1,0 +1,13 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Category
+@{
+    ViewBag.Title = "Update Page";
+}
+
+<h2>Update Page</h2>
+
+<form method="post" action="~/Category/Update" class="m-3">
+    @Html.HiddenFor(a=>a.CategoryId)
+    @Html.TextBoxFor(x=>x.CategoryName, new { @class ="form-control" })
+    <button type="submit" class="btn btn-warning m-3">Update</button>
+
+</form>

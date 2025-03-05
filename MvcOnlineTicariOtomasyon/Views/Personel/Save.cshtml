@@ -1,0 +1,26 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.classes.Personel
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2 class="m-3">
+    The Page Of Adding New Personel
+</h2>
+@using (Html.BeginForm("Save", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    <form method = "post" action = "~/Personel/Save" class="m-3">
+
+    <input type="hidden" placeholder="Personel Id" class="form-control m-2" id="PersonelId" name="PersonelId" />
+
+    <input required type="text" placeholder="Personel Name" class="form-control m-2" id="PersonelName" name="PersonelName" />
+    <input required type="text" placeholder="Personel Surname" class="form-control m-2" id="PersonelSurname" name="PersonelSurname" />
+    @*<input required type="text" placeholder="Personel İmage" class="form-control m-2" id="Personelİmage" name="Personelİmage" />*@
+    <input type="file" id="Personelİmage" name="Personelİmage" class="form-control m-2" placeholder="Personel İmage" >
+
+    @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dept, new { @class = "form-control" })
+
+    <button type="submit" class="btn btn-primary m-3">Save</button>
+
+</form>
+    }
+
+
