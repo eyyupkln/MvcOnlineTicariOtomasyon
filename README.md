@@ -51,14 +51,6 @@ Bu proje, işletmelerin ticari operasyonlarını yönetmelerine olanak sağlayan
 - jQuery
 - AdminLTE Template
 
-## Kurulum
-
-1. Projeyi klonlayın
-2. Visual Studio'da solution'ı açın
-3. NuGet paketlerini yükleyin
-4. Veritabanı bağlantı ayarlarını Web.config dosyasında yapılandırın
-5. Projeyi çalıştırın
-
 
 
 ## İletişim ve Destek
